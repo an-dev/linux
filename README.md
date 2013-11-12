@@ -4,7 +4,7 @@ Some workarounds to adjust the backlight brightness using the function left/righ
 
 Currently using elementaryOS, based on Ubuntu LTS(12.04).
 
-Edit Grub (generic)
+Edit Grub
 ===
 
 You can fix the issue by editing /etc/default/grub and adding:
@@ -17,12 +17,13 @@ resulting in:
 Then, save and close the /etc/default/grub file and update the grub:
 * "sudo update-grub"
 
-Script that stuff (should work with generic Intel HD cards also)
+Script that stuff
 ===
 
 What you can do is to use a manual override that , by modifying /etc/rc.local as follows:
 
-'#!/bin/sh -e
+```shell
+#!/bin/sh -e
 #
 # rc.local
 #
@@ -36,7 +37,8 @@ What you can do is to use a manual override that , by modifying /etc/rc.local as
 # By default this script does nothing.
 echo 978 > /sys/class/backlight/intel_backlight/brightness
 chmod 777 /sys/class/backlight/intel_backlight/brightness
-exit 0'
+exit 0
+```
 
 The downside is that you can't change the brightness easily except by manually modifying the file /sys/class/backlight/intel_backlight/brightness
 
@@ -44,7 +46,8 @@ What do?
 
 Use the brightchg.sh script to map the function keys and change programmatically the brightness of the screen, using custom keys on your keyboard.
 
-'#!/bin/bash
+```shell
+#!/bin/bash
 # Acer Travelmate P253-M brightness control workaround
 # Note: add the following to /etc/rc.local
 #       chmod 777 /sys/class/backlight/intel_backlight/brightness
@@ -74,3 +77,4 @@ else
   curr=`echo "$curr - $bump" | bc`
 fi
 echo $curr | tee /sys/class/backlight/intel_backlight/brightness'
+```
