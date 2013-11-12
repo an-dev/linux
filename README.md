@@ -8,14 +8,22 @@ Edit Grub
 ===
 
 You can fix the issue by editing /etc/default/grub and adding:
-* acpi_osi=Linux acpi_backlight=vendor
+
+```acpi_osi=Linux acpi_backlight=vendor```
+
 to
-* GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+
+```GRUB_CMDLINE_LINUX_DEFAULT="quiet splash```
+
 resulting in:
-* GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi=Linux acpi_backlight=vendor"
+
+```GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi=Linux acpi_backlight=vendor```
 
 Then, save and close the /etc/default/grub file and update the grub:
-* "sudo update-grub"
+
+```sudo update-grub```
+
+
 
 Script that stuff
 ===
